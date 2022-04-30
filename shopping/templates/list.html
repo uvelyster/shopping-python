@@ -1,0 +1,48 @@
+{#
+  Introducing MySQL InnoDB Cluster
+  
+  This template defines the list template for use in the shopping list
+  application using the base template.
+  
+  Dr. Charles Bell, 2018
+#}
+{% extends "base.html" %}
+{% block title %}Shopping List Query Results{% endblock %}
+{% block page_content %}
+  <legend>My Shopping List</legend>
+  <form method=post> {{ form.csrf_token }}
+    <fieldset>
+      {{ form.submit }} {{ form.show_all }} {{ form.hide_checked }} <br><br>
+    </fieldset>
+    <table border="1" cellpadding="1" cellspacing="1">
+      <tr>
+        <td style="width:120px"><b>Actions</b></td>
+        {% for col in columns %}
+          {{ col|safe }}
+        {% endfor %}
+      </tr>
+      {% for row in rows %}
+        <input type="hidden" name="row_ids" value="{{row[0]}}">
+        <tr>
+          <td>
+            <a href="{{ '/item?operation=Update&row_id=%s'%(row[0]) }}">Update</a>
+            <label>  </label>
+            <a href="{{ '/item?operation=Delete&row_id=%s'%(row[0]) }}">Delete</a>
+          </td>
+          <td> {{ row[1] }} </td>
+          <td> {{ row[2] }} </td>
+          <td>
+            <div align="center">
+              {% if row[3] == 1 %}
+                <input type="checkbox" name="checkboxes" value="{{row[0]}}" checked >
+              {% else %}
+                <input type="checkbox" name="checkboxes" value="{{row[0]}}" >
+              {% endif %}  
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </form>
+  <br>
+{% endblock %}

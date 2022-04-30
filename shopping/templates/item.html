@@ -1,0 +1,25 @@
+{#
+  Introducing MySQL InnoDB Cluster
+  
+  This template defines the item view template for use in the shopping list
+  application using the base template.
+  
+  Dr. Charles Bell, 2018
+#}
+{% extends "base.html" %}
+{% block title %}Shopping List{% endblock %}
+{% block page_content %}
+  <form method=post> {{ form.csrf_token }}
+    <fieldset>
+      <legend>Item View</legend>
+      {{ form.hidden_tag() }}
+      <div style=font-size:20pz; font-weight:bold; margin-left:150px;s> 
+        {{ form.description.label }} <br>
+        {{ form.description(size=75) }} <br>
+        {{ form.note.label }} <br>
+        {{ form.note(size=75) }} <br><br>
+        {{ form.create_button }}
+      </div>
+    </fieldset>  
+  </form>  
+{% endblock %}  

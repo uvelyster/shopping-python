@@ -1,0 +1,5 @@
+Flask
+Flask-Script
+Flask-Bootstrap
+Flask-WTF
+mysql-connector-python==8.0.22
