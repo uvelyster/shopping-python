@@ -141,8 +141,8 @@ class Library(object):
     def __init__(self):
         self.config = {
             'user': 'root',
-            'password': '<secret>',
-            'host': 'cluster-rpi-app',
+            'password': 'root',
+            'host': 'mysql-router',
             'port': RO_PORT,
             'database': None,
         }
